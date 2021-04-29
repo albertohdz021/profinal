@@ -1,0 +1,40 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		//Declarar las variables 
+		Double tasa = 0, cuota = 0, k = 0, monto = 0, prima = 0, itbis = 0, seguro = 0;
+		int plazo = 0;
+		string valor;
+		
+		//título 
+		Console.WriteLine ("CALCULO CUOTA DE PRESTAMO");
+		
+		// introduzca parámetros 
+		Console.Write("Indique el Monto del Préstamo: ");
+		valor = Console.ReadLine();
+		monto = Convert.ToDouble(valor);
+		Console.Write("Indique la Tasa de interés: ");
+		valor = Console.ReadLine();
+		tasa = Convert.ToDouble(valor);
+		Console.Write("Indique el Plazo del Préstamo: ");
+		valor = Console.ReadLine();
+		plazo = Convert.ToInt32(valor);
+		
+		//Cuota del préstamo
+    
+		//seguro
+		prima = monto * 0.007;
+		itbis = prima * 0.18;
+		seguro = (((prima + itbis)*plazo)/10)/plazo;
+    
+		//cuota
+		tasa = (tasa/1200);
+		k = Math.Pow((1+tasa), plazo);
+		cuota = tasa * monto * k /(k-1);
+		cuota = cuota + seguro;
+		Console.WriteLine("El monto de la cuota es: {0}", cuota);		
+	}
+}
